@@ -2,18 +2,19 @@ body {
   font-size: 24px;
   padding: 40px;
 }
-.breed-select {
-  margin-bottom: 20px;
-  width: 100px;
-  scroll-behavior: smooth;
+.ss-main {
+  width: 40% !important;
 }
-
+.loader {
+  font-weight: 700;
+}
 .cat-info {
   margin-top: 50px;
 }
 
 .catImg {
   width: 600px;
+  object-fit: scale-down;
   margin-right: 50px;
 }
 

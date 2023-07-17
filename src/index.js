@@ -9,7 +9,7 @@ Notiflix.Notify.init({
 });
 
 axios.defaults.headers.common['x-api-key'] =
-  'live_ll4GIjvo9ClYsMVe1gwe9R5jiQQNgNMPwreF7lvehA0lqTrAYQERaVkPMedGtuFB';
+  'live_W2q5m49zR3PkodJZv0yeNe9IRaKvBe8kExrT4jXWINXZcnyxd8as8Wkjfx6nPvfe';
 
 const breedSelect = document.querySelector('.breed-select');
 const loader = document.querySelector('.loader');
@@ -80,7 +80,7 @@ function initCatApp() {
     .then(breeds => {
       fillCatList(breeds);
       var select = new SlimSelect({
-        select: '.breed-select',
+        select: breedSelect,
       });
       Notiflix.Notify.info(
         'Wybierz rasę z listy, aby wyświetlić więcej informacji.'

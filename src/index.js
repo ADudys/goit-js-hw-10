@@ -5,7 +5,7 @@ import '../node_modules/slim-select/dist/slimselect.css';
 import Notiflix from 'notiflix';
 
 Notiflix.Notify.init({
-  position: 'center-top',
+  position: 'right-top',
 });
 
 axios.defaults.headers.common['x-api-key'] =
@@ -20,10 +20,20 @@ breedSelect.addEventListener('change', selectCat);
 
 error.style.display = 'none';
 
+function fillCatList(breeds) {
+  breeds.forEach(breed => {
+    const option = document.createElement('option');
+    option.value = breed.id;
+    option.textContent = breed.name;
+    breedSelect.appendChild(option);
+  });
+}
+
 function selectCat(e) {
   const breedId = e.target.value;
   if (breedId) {
     loader.style.display = 'block';
+    catInfo.style.display = 'none';
     fetchCat(breedId);
   } else {
     loader.style.display = 'none';
@@ -33,8 +43,8 @@ function selectCat(e) {
 function fetchCat(breedId) {
   fetchCatByBreed(breedId)
     .then(response => {
-      const catItemInfo = response;
-      showCat(catItemInfo);
+      const cat = response;
+      showCat(cat);
     })
     .catch(error => {
       Notiflix.Notify.failure(
@@ -47,30 +57,21 @@ function fetchCat(breedId) {
     });
 }
 
-function showCat(catItemInfo) {
-  const { name, description, temperament } = catItemInfo[0].breeds[0];
-  const { url } = catItemInfo[0];
+function showCat(cat) {
+  const { name, description, temperament } = cat[0].breeds[0];
+  const { url } = cat[0];
   const catInfoHTML = `
-  <div class="catInfo">
-    <img class="catImage" src="${url}" alt="">
-    <div class="descriptionWrapper">
+
+    <img class="catImg" src="${url}" alt="">
+    <div class="description">
       <h2>${name}</h2>
       <p> ${description}</p>
       <p><strong>Temperament:</strong> ${temperament}</p>
-    </div>
-    </div>
+    
+
   `;
-
+  catInfo.style.display = 'inline-flex';
   catInfo.innerHTML = catInfoHTML;
-}
-
-function fillCatList(breeds) {
-  breeds.forEach(breed => {
-    const option = document.createElement('option');
-    option.value = breed.id;
-    option.textContent = breed.name;
-    breedSelect.appendChild(option);
-  });
 }
 
 function initCatApp() {

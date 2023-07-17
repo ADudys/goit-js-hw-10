@@ -1,0 +1,22 @@
+body {
+  font-size: 24px;
+}
+.breed-select {
+  margin-bottom: 20px;
+  width: 100px;
+  scroll-behavior: smooth;
+}
+
+.catInfo{
+display: inline-flex;
+margin-top: 50px;
+}
+
+.catImg{
+    width: 500px;
+margin-right: 50px;
+}
+
+.descriptionWrapper{
+    margin-right: 50px;
+}

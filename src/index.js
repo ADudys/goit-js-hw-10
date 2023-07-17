@@ -48,7 +48,7 @@ function fetchCat(breedId) {
     })
     .catch(error => {
       Notiflix.Notify.failure(
-        'Upps! Coś poszło nie tak. Odśwież stronę jeszcze raz.'
+        'Ooops! Something went wrong, please try to refresh the website.'
       );
       return error;
     })
@@ -83,7 +83,7 @@ function initCatApp() {
         select: breedSelect,
       });
       Notiflix.Notify.info(
-        'Wybierz rasę z listy, aby wyświetlić więcej informacji.'
+        'Choose the breed form the list to get more information.'
       );
     })
     .catch(error => {

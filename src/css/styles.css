@@ -21,3 +21,7 @@ body {
 .description {
   margin-right: 20px;
 }
+.error {
+  color: red;
+  font-weight: 700;
+}
